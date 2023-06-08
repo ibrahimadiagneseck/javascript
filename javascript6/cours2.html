@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapReduce</title>
+</head>
+<body>
+
+    <p class="show" style="color: brown; text-align: center; font-size: 22px;"></p>
+
+    <script>
+
+        // summe uniquement des carres des nombres paires
+        const show = document.querySelector('.show');
+
+        const nombres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // premier methode 
+        // on parcours deux fois le tableau
+
+        const sum_carre1 = nombres
+        .filter((num) => num % 2 === 0)
+        .reduce((sum, num) => sum + num ** 2, 0);
+
+        // deuxieme methode
+
+        const sum_carre2 = nombres
+        .reduce((sum, num) => {
+            if (num % 2 === 0) {
+                return sum + num ** 2;
+            }
+            return sum;
+        }, 0); // 0 comme valeur initiale pour sum
+
+        // troisieme methode
+
+        const sum_carre3 = nombres.reduce((sum, num) => num % 2 === 0 ? sum + num ** 2 : sum, 0); 
+
+
+        show.textContent = sum_carre1;
+        
+    </script>
+    
+</body>
+</html>
